@@ -4,12 +4,12 @@ import { getPosts, selectPosts } from './postsSlice';
 import { VideoPost, TextPost, ImagePost } from '../post/post';
 
 
-
 export const Posts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   console.log(posts);
   let postComponents;
+
 
   if (posts[0]) { // check if posts were already fetched
     postComponents = posts.map((post) => {
@@ -22,6 +22,7 @@ export const Posts = () => {
             author={post.data.author_fullname} 
             videoSrc={post.data.media.reddit_video.fallback_url}
             key={post.data.id}
+            permalink={post.data.permalink}
           />
         );
       } 
@@ -32,6 +33,7 @@ export const Posts = () => {
             author={post.data.author_fullname} 
             imageSrc={post.data.url} 
             key={post.data.id}
+            permalink={post.data.permalink}
           />
         )
       }
@@ -40,6 +42,7 @@ export const Posts = () => {
           title={post.data.title}
           author={post.data.author_fullname} 
           key={post.data.id}
+          permalink={post.data.permalink}
         />
       );
 
