@@ -1,3 +1,5 @@
+import './post.css';
+
 export const VideoPost = (props) => {
   const title = props.title;
   const videoSrc = props.videoSrc;
@@ -5,7 +7,7 @@ export const VideoPost = (props) => {
 
   if(props.author) {
     return (
-      <div className="postContainer">
+      <div className="videoPost post">
         <h2>{title}</h2> 
         <video controls width='250'>
           <source src={videoSrc} type='video/mp4'/>
@@ -23,7 +25,7 @@ export const TextPost = (props) => {
 
   if(props.author) {
     return (
-      <div className="postContainer">
+      <div className="textPost post">
         <h2>{title}</h2> 
         <h4>author: {author}</h4>
       </div>
@@ -39,7 +41,7 @@ export const ImagePost = (props) => {
 
   if(props.author) {
     return (
-      <div className="postContainer">
+      <div className="imagePost post">
         <h2>{title}</h2> 
         <img src={imageSrc} alt='reddit post'/>
         <h4>author: {author}</h4>

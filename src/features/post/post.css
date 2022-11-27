@@ -1,0 +1,7 @@
+.post {
+  width: 50vw;
+}
+
+.post img, .post video {
+  width: 100%;
+}
