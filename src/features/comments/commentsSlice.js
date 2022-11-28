@@ -23,7 +23,9 @@ export const commentsSlice = createSlice({
       })
       .addCase(getComments.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.comments = action.payload;
+        state.comments = action.payload[1].data.children.map((object) => {
+          return {comment: object.data.body, author: object.data.author}
+        });
       })
       .addCase(getComments.rejected, (state) => {
         state.status = 'rejected';
