@@ -5,8 +5,8 @@ export const getComments = createAsyncThunk(
   async (permalink) => {
     const response = await fetch(`https://www.reddit.com${permalink}.json`);
     const json = await response.json();
-    console.log(json);
-    return json;
+    const payload = {json, permalink}
+    return payload;
   }
 )
 
@@ -23,7 +23,7 @@ export const commentsSlice = createSlice({
       })
       .addCase(getComments.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.comments = action.payload[1].data.children.map((object) => {
+        state.comments[action.payload.permalink] = action.payload.json[1].data.children.map((object) => {
           return {comment: object.data.body, author: object.data.author}
         });
       })

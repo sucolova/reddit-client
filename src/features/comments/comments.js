@@ -7,17 +7,24 @@ export const Comments = (props) => {
   const dispatch = useDispatch();
   const comments = useSelector(selectComments);
 
+  let commentsToRender;
+  const permalink = props.permalink;
+
   const handleClick = () => {
-    const permalink = props.permalink;
     dispatch(getComments(permalink));
     console.log(permalink);
+    console.log(comments)
   }
 
-  const commentsToRender = comments.map((comment) => {
-    return (
-      <Comment body={comment.comment} author={comment.author} /> 
-    )
-  })
+  if (comments[permalink]) {
+    console.log('inside map')
+    commentsToRender = comments[permalink].map((comment) => {
+      return (
+        <Comment body={comment.comment} author={comment.author} /> 
+      )
+    })
+
+  }
 
   return (
     <div>
