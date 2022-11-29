@@ -10,7 +10,7 @@ export const VideoPost = (props) => {
     return (
       <div className="videoPost post">
         <h2>{title}</h2> 
-        <video controls width='250'>
+        <video controls muted width='250'>
           <source src={videoSrc} type='video/mp4'/>
         </video>
         <h4>author: {author}</h4>

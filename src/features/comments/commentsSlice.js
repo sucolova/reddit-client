@@ -5,7 +5,7 @@ export const getComments = createAsyncThunk(
   async (permalink) => {
     const response = await fetch(`https://www.reddit.com${permalink}.json`);
     const json = await response.json();
-    const payload = {json, permalink}
+    const payload = {json, permalink} // need the permalink to connect post with comments for post
     return payload;
   }
 )
