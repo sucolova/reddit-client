@@ -10,12 +10,18 @@ export const Comments = (props) => {
   const comments = useSelector(selectComments);
   const permalink = props.permalink;
   const [commentsToRender, setCommentsToRender] = useState();
-  let areCommentsFetched = comments[permalink]; // true if store.comments has a property permalink, it only has this property, if the comments for the post, it is in were fetched
-  let commentsList = commentsToRender ? <ul>{commentsToRender}</ul> : null; 
+  const [showComments, setShowComments] = useState(false);
+  const areCommentsFetched = comments[permalink]; // true if store.comments has a property permalink, it only has this property, if the comments for the post, it is in were fetched
+  const commentsList = commentsToRender ? <ul>{commentsToRender}</ul> : null; 
   // console.log('comments were rendered')
 
   const handleClick = () => {
     dispatch(getComments(permalink));
+    if (showComments) {
+      setShowComments(false);
+    } else {
+      setShowComments(true);
+    }
   }
 
   useEffect(() => { // this way comments are only updated if they are fetched
@@ -35,8 +41,8 @@ export const Comments = (props) => {
 
   return (
     <div>
-      <button onClick={handleClick} > getComments </button>
-      {commentsList}
+      <button onClick={handleClick} > {! showComments ? 'comments' : 'hide comments'}</button>
+      {showComments && commentsList}
     </div>
   )
 }
