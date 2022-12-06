@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux"
-import { selectSubReddits, getSubreddits, selectSubRedditsStatus } from "./subredditsSlice";
+import { selectSubReddits, getSubreddits, selectSubRedditsStatus, selectListedSubReddits, listedSubReddits } from "./subredditsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { SubRedditButton } from './subRedditButton';
 
@@ -9,6 +9,7 @@ export const SubReddits = () => {
   const dispatch = useDispatch();
   const subReddits = useSelector(selectSubReddits);
   const subredditsStatus = useSelector(selectSubRedditsStatus);
+  const areSubsListed = useSelector(selectListedSubReddits);
   const [subRedditsToRender, setSubRedditsToRender] = useState();
 
 
@@ -19,7 +20,7 @@ export const SubReddits = () => {
   }, [dispatch, subReddits, subredditsStatus]);
 
   useEffect(() => {
-    if (subReddits[0]) {
+    if (! areSubsListed && subredditsStatus === 'idle') {
       setSubRedditsToRender(subReddits.map((sub) => {
         return (
 
@@ -27,9 +28,10 @@ export const SubReddits = () => {
             <SubRedditButton sub={sub} />
           </li>
         );
-      }))
+      }));
+      dispatch(listedSubReddits);
     }
-  },[subReddits, subRedditsToRender]);
+  },[areSubsListed, subReddits, dispatch, subredditsStatus]);
 
 
   return (

@@ -14,6 +14,13 @@ export const subRedditsSlice = createSlice({
   initialState: {
     status: 'nothing',
     subReddits: {},
+    listedSubReddits: false,
+  },
+  reducers: {
+    listedSubReddits: (state) => {
+      state.listedSubReddits = true;
+    },
+
   },
   extraReducers: (builder) => {
     builder
@@ -33,3 +40,5 @@ export const subRedditsSlice = createSlice({
 export default subRedditsSlice.reducer;
 export const selectSubReddits = (state) => state.subReddits.subReddits;
 export const selectSubRedditsStatus = (state) => state.subReddits.status;
+export const selectListedSubReddits = (state) => state.subReddits.listedSubReddits;
+export const {listedSubReddits} = subRedditsSlice.actions;

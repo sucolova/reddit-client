@@ -6,7 +6,7 @@ export const SubRedditButton = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <button onClick={ () => dispatch(getPosts(sub.data.display_name_prefixed))}>
+    <button onClick={() => dispatch(getPosts(sub.data.display_name_prefixed))}>
       {sub.data.display_name_prefixed}
     </button>
   )
