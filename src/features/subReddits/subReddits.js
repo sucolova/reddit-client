@@ -1,23 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux"
-import { selectSubReddits, getSubreddits } from "./subredditsSlice";
+import { selectSubReddits, getSubreddits, selectSubRedditsStatus } from "./subredditsSlice";
+import { v4 as uuidv4 } from "uuid";
 
 
 export const SubReddits = () => {
   const dispatch = useDispatch();
   const subReddits = useSelector(selectSubReddits);
+  const subredditsStatus = useSelector(selectSubRedditsStatus);
   const [subRedditsToRender, setSubRedditsToRender] = useState();
 
 
+
   useEffect(() => { // maybe infinite loop if rejected
-    ! subReddits[0] && dispatch(getSubreddits()); // check for subReddits to only fetch once, because useEffect runs twice (maybe because of strict mode)
-    console.log('useEffect subreddits fetching')
-  }, [dispatch, subReddits]);
+    subredditsStatus === 'nothing' && dispatch(getSubreddits());
+    console.log('useEffect subreddits fetching', subredditsStatus)
+  }, [dispatch, subReddits, subredditsStatus]);
 
   useEffect(() => {
     if (subReddits[0]) {
       setSubRedditsToRender(subReddits.map((sub) => {
-        return <li>{sub.data.display_name_prefixed}</li>; // needs a key
+        return <li key={uuidv4()}>{sub.data.display_name_prefixed}</li>; // needs a key
       }))
     }
   },[subReddits]);

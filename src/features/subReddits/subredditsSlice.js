@@ -32,4 +32,4 @@ export const subRedditsSlice = createSlice({
 
 export default subRedditsSlice.reducer;
 export const selectSubReddits = (state) => state.subReddits.subReddits;
-//export const selectSubRedditsStatus = (state) => state.subReddits.status;
+export const selectSubRedditsStatus = (state) => state.subReddits.status;
