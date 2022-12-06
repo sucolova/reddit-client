@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { selectSubReddits, getSubreddits, selectSubRedditsStatus } from "./subredditsSlice";
 import { v4 as uuidv4 } from "uuid";
+import { SubRedditButton } from './subRedditButton';
 
 
 export const SubReddits = () => {
@@ -20,10 +21,15 @@ export const SubReddits = () => {
   useEffect(() => {
     if (subReddits[0]) {
       setSubRedditsToRender(subReddits.map((sub) => {
-        return <li key={uuidv4()}>{sub.data.display_name_prefixed}</li>; // needs a key
+        return (
+
+          <li key={uuidv4()}>
+            <SubRedditButton sub={sub} />
+          </li>
+        );
       }))
     }
-  },[subReddits]);
+  },[subReddits, subRedditsToRender]);
 
 
   return (

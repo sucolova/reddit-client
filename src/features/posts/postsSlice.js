@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 export const getPosts = createAsyncThunk(
   'posts/getPosts',
-  async () => {
-    const response = await fetch("https://www.reddit.com/r/science/.json");
+  async (sub) => {
+    const response = await fetch(`https://www.reddit.com/${sub}/.json`);
     const json = await response.json();
     return json.data.children;
   }
