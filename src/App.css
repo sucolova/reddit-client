@@ -1,7 +1,72 @@
+html * {
+  box-sizing: border-box;
+}
+
+.App * {
+  border: 1px solid red;
+}
+
 .App {
   text-align: center;
 }
 
-header {
-  color: red;
+/* logo */
+
+#logo {
+  display: flex;
+  border: 3px solid black;
+  border-radius: 100px;
+  max-width: min-content;
+  margin: 0 auto;
+  font-weight: bold;
+
 }
+
+#logo svg, #logo h2 {
+  margin: 3px;
+}
+
+/*layout*/
+
+.App {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: .5fr 5fr 1fr;
+  grid-template-areas: "logo logo logo"
+  "empty posts subs";
+  gap: 20px 10px;
+}
+
+header {
+  grid-area: logo;
+}
+
+nav {
+  grid-area: subs;
+}
+
+main {
+  grid-area: posts;
+}
+
+
+/*SubReddits*/
+
+.SubReddits {
+  background-color: green;
+}
+
+.SubRedditsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.SubRedditButton {
+  color: black;
+  border: solid 3px black;
+  border-radius: 100px;
+  margin-bottom: 3px;
+  font-size: .5em;
+}
+

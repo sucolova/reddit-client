@@ -54,10 +54,8 @@ export const Posts = () => {
 
 
   return (
-    <div>
-      <h2>Posts</h2>
+    <div className='Posts'>
       {postsList} 
-
       <button onClick={() => dispatch(getPosts())}>getPosts</button>
     </div>
   );

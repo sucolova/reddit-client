@@ -14,7 +14,8 @@ https://jazzy-strudel-1ae5a3.netlify.app/
 - handle rejected fetching
 - styling
     - loading animations
+    - responsive Design for all screen sizes
+    - fallbacks for img, fonts etc.
 - disable video controls (audio source is not includet in reddit.json api)
-- responsive Design for all screen sizes
 - accessibility improvement
 

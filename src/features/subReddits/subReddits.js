@@ -35,9 +35,8 @@ export const SubReddits = () => {
 
 
   return (
-    <div>
-      <h1>SubReddits</h1>
-      <ul>{subRedditsToRender}</ul>
+    <div className='SubReddits'>
+      <ul className='SubRedditsList'>{subRedditsToRender}</ul>
     </div>
   )
 

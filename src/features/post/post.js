@@ -1,4 +1,3 @@
-import './post.css';
 import {Comments} from '../comments/comments';
 
 export const VideoPost = (props) => {
@@ -9,11 +8,11 @@ export const VideoPost = (props) => {
   if(props.author) {
     return (
       <div className="videoPost post">
-        <h2>{title}</h2> 
+        <p className='title'>{title}</p> 
         <video controls muted width='250'>
           <source src={videoSrc} type='video/mp4'/>
         </video>
-        <h4>author: {author}</h4>
+        <p className="author">author: {author}</p>
         <Comments permalink={props.permalink} />
       </div>
     )
@@ -28,8 +27,8 @@ export const TextPost = (props) => {
   if(props.author) {
     return (
       <div className="textPost post">
-        <h2>{title}</h2> 
-        <h4>author: {author}</h4>
+        <p className='title'>{title}</p> 
+        <p className="author">author: {author}</p>
         <Comments permalink={props.permalink} />
       </div>
     )
@@ -45,9 +44,9 @@ export const ImagePost = (props) => {
   if(props.author) {
     return (
       <div className="imagePost post">
-        <h2>{title}</h2> 
+        <p className='title'>{title}</p> 
         <img src={imageSrc} alt='reddit post'/>
-        <h4>author: {author}</h4>
+        <p className="author">author: {author}</p>
         <Comments permalink={props.permalink} />
       </div>
     )
