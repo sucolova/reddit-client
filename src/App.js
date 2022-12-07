@@ -4,15 +4,17 @@ import { SubReddits } from './features/subReddits/subReddits';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faRedditAlien} from '@fortawesome/free-brands-svg-icons';
 import './App.css';
+import 'dracula-ui/styles/dracula-ui.css';
+import {Heading, Card} from 'dracula-ui';
 
 function App() {
   return (
     <div className="App">
       <header>
-        <div id='logo'>
+        <Card color='animated' id='logo'>
           <FontAwesomeIcon icon={faRedditAlien} />
-          <h2>minimal</h2>
-        </div>
+          <Heading color='black'>minimal</Heading>
+        </Card>
       </header>
       <nav>
         <SubReddits />

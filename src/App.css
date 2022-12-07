@@ -2,9 +2,9 @@ html * {
   box-sizing: border-box;
 }
 
-.App * {
+/*.App * {
   border: 1px solid red;
-}
+}*/
 
 .App {
   text-align: center;
@@ -63,10 +63,10 @@ main {
 }
 
 .SubRedditButton {
-  color: black;
   border: solid 3px black;
   border-radius: 100px;
   margin-bottom: 3px;
   font-size: .5em;
 }
+
 
