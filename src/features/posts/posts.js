@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPosts, selectPosts } from './postsSlice';
+import { useSelector } from 'react-redux';
+import { selectPosts } from './postsSlice';
 import { VideoPost, TextPost, ImagePost } from '../post/post';
 
 
 export const Posts = () => {
-  const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   console.log(posts);
   const [postsToRender, setPostsToRender] = useState();
@@ -56,7 +55,6 @@ export const Posts = () => {
   return (
     <div className='Posts'>
       {postsList} 
-      <button onClick={() => dispatch(getPosts())}>getPosts</button>
     </div>
   );
 }

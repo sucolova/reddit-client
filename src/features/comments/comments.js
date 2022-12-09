@@ -40,7 +40,7 @@ export const Comments = (props) => {
 
 
   return (
-    <div>
+    <div className="Comments">
       <button onClick={handleClick} > {! showComments ? 'comments' : 'hide comments'}</button>
       {showComments && commentsList}
     </div>

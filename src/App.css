@@ -2,10 +2,6 @@ html * {
   box-sizing: border-box;
 }
 
-/*.App * {
-  border: 1px solid red;
-}*/
-
 .App {
   text-align: center;
 }
@@ -14,16 +10,25 @@ html * {
 
 #logo {
   display: flex;
-  border: 3px solid black;
   border-radius: 100px;
   max-width: min-content;
   margin: 0 auto;
+  margin-top: 1.5em;
   font-weight: bold;
+}
+
+#logo svg {
+  font-size: 5em;
+}
+
+#logo h1 {
+  font-size: 4em;
 
 }
 
-#logo svg, #logo h2 {
-  margin: 3px;
+#logo svg, #logo h1 {
+  margin: .2em;
+  color: var(--black);
 }
 
 /*layout*/
@@ -31,42 +36,156 @@ html * {
 .App {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: .5fr 5fr 1fr;
+  grid-template-columns: .03fr 5fr 2fr;
   grid-template-areas: "logo logo logo"
   "empty posts subs";
-  gap: 20px 10px;
+  gap: 30px 20px;
 }
 
-header {
+header { /* container for logo */
   grid-area: logo;
 }
 
-nav {
+nav { /*container for subReddits*/
   grid-area: subs;
 }
 
-main {
+main { /* container for all posts */
   grid-area: posts;
+  max-width: 100%;
+}
+
+.imagePost, .videoPost {
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 1fr 5fr;
+
+  grid-template-areas: "upVote text"
+  "upVote image"
+  "upVote authorAndComments";
+}
+
+.imagePost h3 {
+  grid-area: text;
+}
+
+.imagePost .imageContainer {
+  grid-area: image;
+}
+
+.imagePost .author {
+  grid-area: authorAndComments;
+}
+
+.Comments {
+  grid-area: authorAndComments;
 }
 
 
 /*SubReddits*/
 
-.SubReddits {
-  background-color: green;
+.SubReddits { /*the outermost div */
+  padding: 1em;
+  border-radius: 1em 0 0 1em;
 }
 
-.SubRedditsList {
+.subRedditsHeading { /* the heading */
+  margin-bottom: 1.5em;
+}
+
+.SubRedditsList { /*the list*/
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+}
+
+
+.SubRedditsList li {
+  width: 100%;
+}
+
+.SubReddit { /*one single line with avatar and h4*/
+  display: flex;
+  min-width: max-content;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .SubRedditButton {
-  border: solid 3px black;
-  border-radius: 100px;
-  margin-bottom: 3px;
-  font-size: .5em;
+  margin: 5px 0;
 }
+
+.SubReddit h4 {
+  margin-left: 1.2em;
+}
+
+
+/*posts*/
+
+main :first-child { /*the first post element */
+  margin-top: 0;
+} 
+
+.Posts ul {
+  width: 100%;
+}
+
+.post {
+  margin: 2em 0;
+  padding: 1.2em;
+  border-radius: 1em;
+} 
+
+
+.imageContainer img {
+  width: 100%;
+}
+
+/*fonts*/
+
+.videoPost h3, .textPost h3, .imagePost h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.subRedditsHeading {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/*colors*/
+
+#logo {
+  border: 3px solid var(--blackSecondary);
+  background-color: var(--purple);
+}
+
+.App {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+main {
+  background-color: var(--black);
+}
+
+.post {
+  background-color: var(--blackSecondary);
+}
+
+.SubReddits {
+  background-color: var(--blackSecondary);
+}
+
+button {
+  background-color: var(--purple);
+}
+
+.SubRedditButton {
+  background-color: transparent;
+  border: none;
+}
+
 
 

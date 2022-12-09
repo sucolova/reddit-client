@@ -36,6 +36,7 @@ export const SubReddits = () => {
 
   return (
     <div className='SubReddits'>
+      <h2 className='subRedditsHeading'> SubReddits </h2>
       <ul className='SubRedditsList'>{subRedditsToRender}</ul>
     </div>
   )

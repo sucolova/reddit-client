@@ -8,8 +8,8 @@ export const VideoPost = (props) => {
   if(props.author) {
     return (
       <div className="videoPost post">
-        <p className='title'>{title}</p> 
-        <video controls muted width='250'>
+        <h3 className='title'>{title}</h3> 
+        <video controls muted width='100%'>
           <source src={videoSrc} type='video/mp4'/>
         </video>
         <p className="author">author: {author}</p>
@@ -27,7 +27,7 @@ export const TextPost = (props) => {
   if(props.author) {
     return (
       <div className="textPost post">
-        <p className='title'>{title}</p> 
+        <h3 className='title'>{title}</h3> 
         <p className="author">author: {author}</p>
         <Comments permalink={props.permalink} />
       </div>
@@ -44,8 +44,10 @@ export const ImagePost = (props) => {
   if(props.author) {
     return (
       <div className="imagePost post">
-        <p className='title'>{title}</p> 
-        <img src={imageSrc} alt='reddit post'/>
+        <h3 className='title'>{title}</h3> 
+        <div className='imageContainer'>
+          <img src={imageSrc} alt='reddit post'/>
+        </div>
         <p className="author">author: {author}</p>
         <Comments permalink={props.permalink} />
       </div>
