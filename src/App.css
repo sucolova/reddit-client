@@ -57,9 +57,8 @@ main { /* container for all posts */
 
 .imagePost, .videoPost {
   display: grid;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: auto 3fr auto;
   grid-template-columns: 1fr 5fr;
-
   grid-template-areas: "upVote text"
   "upVote image"
   "upVote authorAndComments";
@@ -77,8 +76,26 @@ main { /* container for all posts */
   grid-area: authorAndComments;
 }
 
-.Comments {
+.imagePost .Comments {
+  position: relative; /*to position the button*/
   grid-area: authorAndComments;
+}
+
+.imagePost .Comments button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.imagePost {
+  position: relative; /*to position author;*/
+}
+
+.imagePost .author {
+  grid-area: authorAndComments;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 
