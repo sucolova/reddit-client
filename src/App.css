@@ -55,49 +55,79 @@ main { /* container for all posts */
   max-width: 100%;
 }
 
-.imagePost, .videoPost {
+.imagePost, .videoPost { /*image and video posts layout*/
   display: grid;
-  grid-template-rows: auto 3fr auto;
+  grid-template-rows: minmax(4em, auto) 3fr minmax(4em, auto);
   grid-template-columns: 1fr 5fr;
   grid-template-areas: "upVote text"
   "upVote image"
   "upVote authorAndComments";
 }
 
-.imagePost h3 {
+.imagePost h3, .videoPost h3 {
   grid-area: text;
 }
 
-.imagePost .imageContainer {
+.imagePost .imageContainer, .videoPost video {
   grid-area: image;
 }
 
-.imagePost .author {
+.imagePost .author, .videoPost .author {
   grid-area: authorAndComments;
 }
 
-.imagePost .Comments {
+.imagePost .Comments, .videoPost .Comments {
   position: relative; /*to position the button*/
   grid-area: authorAndComments;
 }
 
-.imagePost .Comments button {
+.imagePost .Comments .svg-inline--fa, .videoPost .Comments .svg-inline--fa {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-.imagePost {
+.imagePost, .videoPost {
   position: relative; /*to position author;*/
 }
 
-.imagePost .author {
+.imagePost .author, .videoPost .author {
   grid-area: authorAndComments;
   position: absolute;
   top: 10px;
   left: 10px;
 }
 
+.textPost { /*layout for textPost*/
+  display: grid;
+  grid-template-rows: minmax(4em, auto) minmax(4em, auto);
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: "upVote text"
+  "upVote authorAndComments";
+  position: relative; /*to position author*/
+}
+
+.textPost .title {
+  grid-area: text;
+}
+
+.textPost .author {
+  grid-area: authorAndComments;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.textPost .Comments {
+  position: relative;
+  grid-area: authorAndComments;
+}
+
+.textPost .Comments .svg-inline--fa {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
 /*SubReddits*/
 
@@ -121,18 +151,15 @@ main { /* container for all posts */
   width: 100%;
 }
 
-.SubReddit { /*one single line with avatar and h4*/
+.SubRedditButton { /*one single line with avatar and h4*/
   display: flex;
   min-width: max-content;
   justify-content: flex-start;
   align-items: center;
-}
-
-.SubRedditButton {
   margin: 5px 0;
 }
 
-.SubReddit h4 {
+.SubRedditButton h4 {
   margin-left: 1.2em;
 }
 
@@ -158,6 +185,16 @@ main :first-child { /*the first post element */
   width: 100%;
 }
 
+/*Comments*/
+
+.Comments ul :first-child :first-child { /*first comment*/
+  margin-top: 5em;
+}
+
+.Comment {
+  margin-top: 2em;
+}
+
 /*fonts*/
 
 .videoPost h3, .textPost h3, .imagePost h3 {
@@ -169,6 +206,15 @@ main :first-child { /*the first post element */
 .subRedditsHeading {
   font-size: 2em;
   font-weight: bold;
+}
+
+.SubRedditButton h4 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.svg-inline--fa {
+  font-size: 1.7em;
 }
 
 /*colors*/
@@ -195,8 +241,8 @@ main {
   background-color: var(--blackSecondary);
 }
 
-button {
-  background-color: var(--purple);
+.svg-inline--fa {
+  color: var(--orange);
 }
 
 .SubRedditButton {
@@ -204,5 +250,8 @@ button {
   border: none;
 }
 
+.SubRedditButton h4 {
+  color: var(--white);
+}
 
 

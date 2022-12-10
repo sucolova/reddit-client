@@ -4,6 +4,8 @@ import { getComments, selectComments } from "./commentsSlice";
 import { Comment } from "../comment/comment";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentSlash, faComment } from "@fortawesome/free-solid-svg-icons";
 
 export const Comments = (props) => {
   const dispatch = useDispatch();
@@ -41,7 +43,11 @@ export const Comments = (props) => {
 
   return (
     <div className="Comments">
-      <button onClick={handleClick} > {! showComments ? 'comments' : 'hide comments'}</button>
+      {! showComments ? 
+        <FontAwesomeIcon icon={faComment} onClick={handleClick} /> 
+        : <FontAwesomeIcon icon={faCommentSlash} onClick={handleClick} />}
+
+
       {showComments && commentsList}
     </div>
   )

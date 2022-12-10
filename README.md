@@ -18,4 +18,5 @@ https://jazzy-strudel-1ae5a3.netlify.app/
     - fallbacks for img, fonts etc.
 - disable video controls (audio source is not includet in reddit.json api)
 - accessibility improvement
-
+- say no comments when there are no comments
+- on ipad when comments are visible -> overflow ( i guess because of screen rotation)

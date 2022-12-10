@@ -16,10 +16,10 @@ export const SubRedditButton = (props) => {
           title={sub.data.display_name} 
           src={sub.data.icon_img}
         />
-      </button>
       <h4> 
         {sub.data.display_name}
       </h4>
+      </button>
     </div>
   )
 }
