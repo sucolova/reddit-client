@@ -1,3 +1,9 @@
+/*reset stylesheet in index.css*/
+
+/********************************************************************************************/
+
+/*global styling*/
+
 html * {
   box-sizing: border-box;
 }
@@ -8,39 +14,18 @@ html * {
 
 .App {
   font-family: 'Fira Code', monospace;
+  background-color: var(--black);
+  color: var(--white);
 }
 
-
-/* logo */
-
-#logo {
-  display: flex;
-  border-radius: 100px;
-  max-width: min-content;
-  margin: 0 auto;
-  margin-top: 2rem;
-  font-weight: bold;
-}
-
-#logo svg {
-  font-size: 5rem;
-}
-
-#logo h1 {
-  font-size: 5rem;
-}
-
-#logo svg, #logo h1 {
-  margin: .5rem;
-  color: var(--black);
-}
+/********************************************************************************************/
 
 /*layout*/
 
 .App {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: .03fr 5fr 2fr;
+  grid-template-columns: 0.3fr 5fr 2fr;
   grid-template-areas: "logo logo logo"
   "empty posts subs";
   gap: 30px 20px;
@@ -134,15 +119,47 @@ main { /* container for all posts */
   right: 10px;
 }
 
+/********************************************************************************************/
+
+/* logo */
+
+#logo {
+  display: flex;
+  border-radius: 100px;
+  max-width: min-content;
+  margin: 0 auto;
+  margin-top: 2rem;
+  font-weight: bold;
+  border: 3px solid var(--blackSecondary);
+  background-color: var(--purple);
+}
+
+#logo svg {
+  font-size: 5rem;
+}
+
+#logo h1 {
+  font-size: 5rem;
+}
+
+#logo svg, #logo h1 {
+  margin: .5rem;
+  color: var(--black);
+}
+
 /*SubReddits*/
 
 .SubReddits { /*the outermost div */
   padding: 1rem;
   border-radius: 1rem 0 0 1rem;
+  background-color: var(--blackSecondary);
 }
 
 .subRedditsHeading { /* the heading */
   margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .SubRedditsList { /*the list*/
@@ -156,20 +173,38 @@ main { /* container for all posts */
   width: 100%;
 }
 
-.SubRedditButton { /*one single line with avatar and h4*/
+.SubRedditButton { /*avatar and h4*/
   display: flex;
   min-width: max-content;
   justify-content: flex-start;
   align-items: center;
   margin: 5px 0;
+  background-color: transparent;
+  border: none;
+  padding: .3rem 1rem;
+}
+
+.SubReddit { /*wraps around SubRedditButton*/
+}
+
+.SubReddit :hover {
+  background-color: var(--purple);
+  border-radius: .7rem;
 }
 
 .SubRedditButton h4 {
   margin-left: 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
 }
 
 
 /*posts*/
+
+main { /*main wraps around all posts*/
+  background-color: var(--black);
+}
 
 main :first-child { /*the first post element */
   margin-top: 0;
@@ -183,11 +218,26 @@ main :first-child { /*the first post element */
   margin: 2rem 0;
   padding: 1.2rem;
   border-radius: 1rem;
+  background-color: var(--blackSecondary);
 } 
+
+.videoPost h3, .textPost h3, .imagePost h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: left;
+}
 
 
 .imageContainer img {
   width: 100%;
+}
+
+.author { /*posted by:*/
+  font-size: 1rem;
+}
+.author b { /*actual name of author*/
+  color: var(--orange);
+  font-weight: bolder;
 }
 
 /*Comments*/
@@ -212,71 +262,10 @@ main :first-child { /*the first post element */
   margin-bottom: .3rem;
 }
 
-/*fonts*/
-
-.videoPost h3, .textPost h3, .imagePost h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-align: left;
-}
-
-.subRedditsHeading {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.SubRedditButton h4 {
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.svg-inline--fa {
+.svg-inline--fa { /*comment icon*/
   font-size: 1.7rem;
-}
-
-.author {
-  font-size: 1rem;
-}
-.author b {
-  color: var(--orange);
-  font-weight: bolder;
-}
-
-/*colors*/
-
-#logo {
-  border: 3px solid var(--blackSecondary);
-  background-color: var(--purple);
-}
-
-.App {
-  background-color: var(--black);
-  color: var(--white);
-}
-
-main {
-  background-color: var(--black);
-}
-
-.post {
-  background-color: var(--blackSecondary);
-}
-
-.SubReddits {
-  background-color: var(--blackSecondary);
-}
-
-.svg-inline--fa {
   color: var(--orange);
 }
 
-.SubRedditButton {
-  background-color: transparent;
-  border: none;
-}
-
-.SubRedditButton h4 {
-  color: var(--white);
-}
 
 

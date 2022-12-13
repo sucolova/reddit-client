@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { useSelector } from 'react-redux';
-import { selectPosts } from './postsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectPosts, getPosts } from './postsSlice';
 import { VideoPost, TextPost, ImagePost } from '../post/post';
 
 
@@ -9,9 +9,14 @@ export const Posts = () => {
   console.log(posts);
   const [postsToRender, setPostsToRender] = useState();
   const postsList = postsToRender ? <ul>{postsToRender}</ul> : null;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('useEffect in posts')
+
+    if (! posts[0]) { // fetch r/home on inital load
+      dispatch(getPosts('r/Home'))
+    }
+
     if (posts[0]) { // check if posts were already fetched
       setPostsToRender(posts.map((post) => {
         if (post.data.media) { //check for video source 
@@ -48,7 +53,7 @@ export const Posts = () => {
       }));
     }
 
-  }, [posts])
+  }, [posts, dispatch])
 
 
 
