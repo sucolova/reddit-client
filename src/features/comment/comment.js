@@ -4,8 +4,8 @@ export const Comment = (props) => {
 
   return (
     <div className="Comment" variant="subtle">
-      <p>{body}</p>
-      <p>by:{author}</p>
+      <p className="CommentAuthor">{author}:</p>
+      <p className="CommentBody">{body}</p>
     </div>
   )
 }

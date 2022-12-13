@@ -16,6 +16,7 @@ https://jazzy-strudel-1ae5a3.netlify.app/
     - loading animations
     - responsive Design for all screen sizes
     - fallbacks for img, fonts etc.
+    - toggle button dark and light mode
 - disable video controls (audio source is not includet in reddit.json api)
 - accessibility improvement
 - say no comments when there are no comments

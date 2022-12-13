@@ -19,7 +19,7 @@ export const Posts = () => {
           return (
             <VideoPost
               title={post.data.title}
-              author={post.data.author_fullname} 
+              author={post.data.author} 
               videoSrc={post.data.media.reddit_video.fallback_url}
               key={post.data.id}
               permalink={post.data.permalink}
@@ -30,7 +30,7 @@ export const Posts = () => {
           return (
             <ImagePost 
               title={post.data.title}
-              author={post.data.author_fullname} 
+              author={post.data.author} 
               imageSrc={post.data.url} 
               key={post.data.id}
               permalink={post.data.permalink}
@@ -40,7 +40,7 @@ export const Posts = () => {
         return (
           <TextPost 
             title={post.data.title}
-            author={post.data.author_fullname} 
+            author={post.data.author} 
             key={post.data.id}
             permalink={post.data.permalink}
           />
