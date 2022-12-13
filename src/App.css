@@ -153,6 +153,10 @@ main { /* container for all posts */
   padding: 1rem;
   border-radius: 1rem 0 0 1rem;
   background-color: var(--blackSecondary);
+  position: sticky;
+  top: 1rem;
+  overflow: scroll;
+  height: calc(100vh - 5rem);
 }
 
 .subRedditsHeading { /* the heading */
@@ -184,8 +188,22 @@ main { /* container for all posts */
   padding: .3rem 1rem;
 }
 
+.SubRedditButton {
+  cursor: pointer;
+}
+
 .SubReddit :hover {
   background-color: var(--purple);
+  border-radius: .7rem;
+}
+
+.SubReddit :focus {
+  background-color: var(--purple);
+  border-radius: .7rem;
+}
+
+.SubReddit :active {
+  background-color: var(--orange);
   border-radius: .7rem;
 }
 
