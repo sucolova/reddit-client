@@ -4,7 +4,7 @@
 
 /*global styling*/
 
-html * {
+html {
   box-sizing: border-box;
 }
 
@@ -25,7 +25,7 @@ html * {
 .App {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 0.3fr 5fr 2fr;
+  grid-template-columns: 0.3fr 5fr auto;
   grid-template-areas: "logo logo logo"
   "empty posts subs";
   gap: 30px 20px;
@@ -184,9 +184,6 @@ main { /* container for all posts */
   padding: .3rem 1rem;
 }
 
-.SubReddit { /*wraps around SubRedditButton*/
-}
-
 .SubReddit :hover {
   background-color: var(--purple);
   border-radius: .7rem;
@@ -197,6 +194,18 @@ main { /* container for all posts */
   font-size: 1rem;
   font-weight: 700;
   color: var(--white);
+}
+
+.SubReddits .loading {
+  height: 100vh;
+  padding-top: 3rem;
+}
+
+.SubReddits .loading h4 {
+  font-size: 1.5rem;
+  color: var(--pink);
+  font-weight: bold;
+  text-align: center;
 }
 
 
@@ -228,8 +237,9 @@ main :first-child { /*the first post element */
 }
 
 
-.imageContainer img {
+.imageContainer img, .videoPost video {
   width: 100%;
+  border-radius: 1rem;
 }
 
 .author { /*posted by:*/
@@ -238,6 +248,20 @@ main :first-child { /*the first post element */
 .author b { /*actual name of author*/
   color: var(--orange);
   font-weight: bolder;
+}
+
+.Posts .loading {
+  height: 100vh;
+  background-color: var(--blackSecondary);
+  border-radius: 1rem;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.Posts .loading h4 {
+  font-size: 1.5rem;
+  color: var(--pink);
+  font-weight: bold;
 }
 
 /*Comments*/
@@ -265,6 +289,18 @@ main :first-child { /*the first post element */
 .svg-inline--fa { /*comment icon*/
   font-size: 1.7rem;
   color: var(--orange);
+}
+
+.Posts .Comments .loading {
+  height: auto;
+  padding-top: 5rem;
+  text-align: center;
+}
+
+.Posts .Comments .loading h4 {
+ color: var(--pink);
+ font-size: 1.5rem;
+ font-weight: bold;
 }
 
 

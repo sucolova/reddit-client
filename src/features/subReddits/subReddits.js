@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux"
 import { selectSubReddits, getSubreddits, selectSubRedditsStatus, selectListedSubReddits, listedSubReddits } from "./subredditsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { SubRedditButton } from './subRedditButton';
-
+import { Loading } from '../loading/loading';
 
 export const SubReddits = () => {
   const dispatch = useDispatch();
@@ -12,11 +12,8 @@ export const SubReddits = () => {
   const areSubsListed = useSelector(selectListedSubReddits);
   const [subRedditsToRender, setSubRedditsToRender] = useState();
 
-
-
-  useEffect(() => { // maybe infinite loop if rejected
+  useEffect(() => {
     subredditsStatus === 'nothing' && dispatch(getSubreddits());
-    console.log('useEffect subreddits fetching', subredditsStatus)
   }, [dispatch, subReddits, subredditsStatus]);
 
   useEffect(() => {
@@ -33,11 +30,13 @@ export const SubReddits = () => {
     }
   },[areSubsListed, subReddits, dispatch, subredditsStatus]);
 
-
   return (
     <div className='SubReddits'>
       <h2 className='subRedditsHeading'> SubReddits </h2>
-      <ul className='SubRedditsList'>{subRedditsToRender}</ul>
+      { subRedditsToRender ? 
+        <ul className='SubRedditsList'>{subRedditsToRender}</ul>
+        : <Loading fetchState={subredditsStatus} />}
+
     </div>
   )
 

@@ -35,4 +35,4 @@ export const commentsSlice = createSlice({
 
 export default commentsSlice.reducer;
 export const selectComments = (state) => state.comments.comments;
-// export const selectCommentsStatus = (state) => state.comments.status;
+export const selectCommentsStatus = (state) => state.comments.status;

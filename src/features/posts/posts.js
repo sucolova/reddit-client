@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectPosts, getPosts } from './postsSlice';
+import { selectPosts, getPosts, selectPostsStatus } from './postsSlice';
 import { VideoPost, TextPost, ImagePost } from '../post/post';
+import { Loading } from '../loading/loading';
 
 
 export const Posts = () => {
   const posts = useSelector(selectPosts);
-  console.log(posts);
+  const postsStatus = useSelector(selectPostsStatus);
+  console.log(postsStatus)
   const [postsToRender, setPostsToRender] = useState();
   const postsList = postsToRender ? <ul>{postsToRender}</ul> : null;
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ export const Posts = () => {
 
   return (
     <div className='Posts'>
-      {postsList} 
+      { postsStatus === 'idle' ? postsList : <Loading fetchState={postsStatus} />} 
     </div>
   );
 }
