@@ -1,5 +1,8 @@
 /*reset stylesheet in index.css*/
 
+
+
+
 /********************************************************************************************/
 
 /*global styling*/
@@ -25,7 +28,7 @@ html {
 .App {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 0.3fr 5fr auto;
+  grid-template-columns: 0.3fr 5fr max-content;
   grid-template-areas: "logo logo logo"
   "empty posts subs";
   gap: 30px 20px;
@@ -47,7 +50,7 @@ main { /* container for all posts */
 
 .imagePost, .videoPost { /*image and video posts layout*/
   display: grid;
-  grid-template-rows: minmax(4rem, auto) 3fr minmax(4rem, auto);
+  grid-template-rows: minmax(4rem, auto) 3fr minmax(2rem, auto);
   grid-template-columns: 1fr 5fr;
   grid-template-areas: "upVote text"
   "upVote image"
@@ -90,7 +93,7 @@ main { /* container for all posts */
 
 .textPost { /*layout for textPost*/
   display: grid;
-  grid-template-rows: minmax(4rem, auto) minmax(4rem, auto);
+  grid-template-rows: minmax(4rem, auto) minmax(2rem, auto);
   grid-template-columns: 1fr 5fr;
   grid-template-areas: "upVote text"
   "upVote authorAndComments";
@@ -117,6 +120,65 @@ main { /* container for all posts */
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+/********************************************************************************************/
+
+/* Votes */
+/* vote scale inline style in voteScale.js */
+
+.Votes {
+  grid-area: upVote;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: 'scale upVote'
+  'scale downVote';
+}
+
+.VoteScale {
+  width: 2.5rem;
+  margin-left: auto;
+  margin-right: 1rem;
+  border-radius: 100px;
+  grid-area: scale;
+}
+
+.voteContainer {
+  grid-area: upVote;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.upVote {
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.upVote h4 {
+  color: var(--white);
+}
+
+.upVote svg {
+  color: var(--purple);
+}
+
+.dowVote svg {
+  color:  var(--black);
+}
+
+.dowVote {
+  height: 4rem;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+}
+
+.dowVote h4 {
+  color: var(--white);
 }
 
 /********************************************************************************************/
@@ -243,10 +305,14 @@ main :first-child { /*the first post element */
 
 .post {
   margin: 2rem 0;
-  padding: 1.2rem;
+  padding: 2rem;
   border-radius: 1rem;
   background-color: var(--blackSecondary);
 } 
+
+.post .title {
+  margin-bottom: 1rem;
+}
 
 .videoPost h3, .textPost h3, .imagePost h3 {
   font-size: 1.3rem;
@@ -254,9 +320,13 @@ main :first-child { /*the first post element */
   text-align: left;
 }
 
+.imageContainer, .videoPost video {
+  margin-bottom: 1rem;
+}
 
 .imageContainer img, .videoPost video {
   width: 100%;
+  object-fit: contain;
   border-radius: 1rem;
 }
 
@@ -316,9 +386,32 @@ main :first-child { /*the first post element */
 }
 
 .Posts .Comments .loading h4 {
- color: var(--pink);
- font-size: 1.5rem;
- font-weight: bold;
+  color: var(--pink);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+/********************************************************************************************/
+
+/*screen sizes*/
+
+@media screen and (min-width: 1921px) {
+  #root {
+    width: 1920px;
+    margin: 0 auto;
+  }
+
+  .SubReddits {
+    border-radius: 1rem;
+  }
+}
+
+
+@media screen and (max-width: 1920px) {
+  #root {
+    width: 100vw;
+  }
 }
 
 

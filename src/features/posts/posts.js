@@ -8,7 +8,6 @@ import { Loading } from '../loading/loading';
 export const Posts = () => {
   const posts = useSelector(selectPosts);
   const postsStatus = useSelector(selectPostsStatus);
-  console.log(postsStatus)
   const [postsToRender, setPostsToRender] = useState();
   const postsList = postsToRender ? <ul>{postsToRender}</ul> : null;
   const dispatch = useDispatch();
@@ -30,6 +29,7 @@ export const Posts = () => {
               videoSrc={post.data.media.reddit_video.fallback_url}
               key={post.data.id}
               permalink={post.data.permalink}
+              upvoteRatio={post.data.upvote_ratio}
             />
           );
         } 
@@ -41,6 +41,7 @@ export const Posts = () => {
               imageSrc={post.data.url} 
               key={post.data.id}
               permalink={post.data.permalink}
+              upvoteRatio={post.data.upvote_ratio}
             />
           )
         }
@@ -50,6 +51,7 @@ export const Posts = () => {
             author={post.data.author} 
             key={post.data.id}
             permalink={post.data.permalink}
+            upvoteRatio={post.data.upvote_ratio}
           />
         );
       }));

@@ -1,19 +1,22 @@
 import {Comments} from '../comments/comments';
+import { VoteScale } from '../voteScale/voteScale';
 
 export const VideoPost = (props) => {
   const title = props.title;
   const videoSrc = props.videoSrc;
   const author = props.author;
+  const upvoteRatio = props.upvoteRatio;
 
   if(props.author) {
     return (
       <div className="videoPost post">
         <h3 className='title'>{title}</h3> 
-        <video controls muted width='100%'>
+        <video controls >
           <source src={videoSrc} type='video/mp4'/>
         </video>
         <p className="author">posted by <b>{author}</b></p>
         <Comments permalink={props.permalink} />
+        <VoteScale upvoteRatio={upvoteRatio} />
       </div>
     )
   }
@@ -23,6 +26,7 @@ export const VideoPost = (props) => {
 export const TextPost = (props) => {
   const title = props.title;
   const author = props.author;
+  const upvoteRatio = props.upvoteRatio;
 
   if(props.author) {
     return (
@@ -30,6 +34,7 @@ export const TextPost = (props) => {
         <h3 className='title'>{title}</h3> 
         <p className="author">posted by <b>{author}</b></p>
         <Comments permalink={props.permalink} />
+        <VoteScale upvoteRatio={upvoteRatio} />
       </div>
     )
   }
@@ -40,6 +45,7 @@ export const ImagePost = (props) => {
   const title = props.title;
   const author = props.author;
   const imageSrc = props.imageSrc;
+  const upvoteRatio = props.upvoteRatio;
 
   if(props.author) {
     return (
@@ -50,6 +56,7 @@ export const ImagePost = (props) => {
         </div>
         <p className="author">posted by <b>{author}</b></p>
         <Comments permalink={props.permalink} />
+        <VoteScale upvoteRatio={upvoteRatio} />
       </div>
     )
   }
