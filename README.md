@@ -7,6 +7,7 @@ https://jazzy-strudel-1ae5a3.netlify.app/
 # limitations of the reddit.json api:
 - no video sound
 - no login option, thus no up/downvote functionality
+- downvotes always 0 for posts, but upvotes and upvoteRatio are correct
 
 # todo:
 
