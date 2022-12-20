@@ -59,8 +59,6 @@ export const Posts = () => {
 
   }, [posts, dispatch])
 
-
-
   return (
     <div className='Posts'>
       { postsStatus === 'idle' ? postsList : <Loading fetchState={postsStatus} />} 
