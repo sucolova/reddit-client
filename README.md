@@ -1,5 +1,8 @@
 # reddit-client
 A minimalistic way to browse reddit in the browser
+## Responsive Single Page Application
+### written in React, Redux, and CSS
+### data fetched from Reddit via the undocumented reddit.Json API
 
 # testing branch online:
 https://jazzy-strudel-1ae5a3.netlify.app/
@@ -11,14 +14,17 @@ https://jazzy-strudel-1ae5a3.netlify.app/
 
 # todo:
 
-- up/downvote ratio bar
 - handle rejected fetching
 - styling
-    - loading animations
-    - responsive Design for all screen sizes
     - fallbacks for img, fonts etc.
     - toggle button dark and light mode
 - disable video controls (audio source is not includet in reddit.json api)
 - accessibility improvement
 - say no comments when there are no comments
-- on ipad when comments are visible -> overflow ( i guess because of screen rotation)
+- browser support
+
+
+# bugs:
+
+- on re-render: old content shortly visible before new content finished loading
+- subreddit 'button: clicked' background-color disappears sometimes especially on mobile devices
