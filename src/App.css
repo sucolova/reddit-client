@@ -69,16 +69,6 @@ main { /* container for all posts */
   grid-area: authorAndComments;
 }
 
-.imagePost .Comments, .videoPost .Comments {
-  position: relative; /*to position the button*/
-  grid-area: authorAndComments;
-}
-
-.imagePost .Comments .svg-inline--fa, .videoPost .Comments .svg-inline--fa {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
 
 .imagePost, .videoPost {
   position: relative; /*to position author;*/
@@ -111,12 +101,12 @@ main { /* container for all posts */
   left: 10px;
 }
 
-.textPost .Comments {
-  position: relative;
+.post .Comments{
+  position: relative; /*to position the button*/
   grid-area: authorAndComments;
 }
 
-.textPost .Comments .svg-inline--fa {
+.post .Comments .svg-inline--fa {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -149,6 +139,7 @@ main { /* container for all posts */
   display: flex;
   flex-direction: column;
   justify-content: left;
+  margin-right: 1rem;
 }
 
 .upVote {
@@ -210,6 +201,10 @@ main { /* container for all posts */
 }
 
 /*SubReddits*/
+
+.toggleVisible {
+  display: none;
+}
 
 .SubReddits { /*the outermost div */
   padding: 1rem;
@@ -287,10 +282,6 @@ main { /*main wraps around all posts*/
 main :first-child { /*the first post element */
   margin-top: 0;
 } 
-
-.Posts ul {
-  width: 100%;
-}
 
 .post {
   margin: 2rem 0;
@@ -378,15 +369,15 @@ main :first-child { /*the first post element */
 }
 
 @keyframes bounce {
-	0%, 50%, 100% {
-		transform: scale(1);
-	}
-	25% {
-		transform: scale(0.6);
-	}
-	75% {
-		transform: scale(1.4);
-	}
+  0%, 50%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.6);
+  }
+  75% {
+    transform: scale(1.4);
+  }
 }
 
 @keyframes fadeIn {
@@ -432,6 +423,10 @@ main :first-child { /*the first post element */
 
 .CommentBody {
   font-size: 1.2rem;
+  /*prevent text overflow on tablet*/
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .CommentAuthor {
@@ -461,12 +456,114 @@ main :first-child { /*the first post element */
   }
 }
 
-
 @media screen and (max-width: 1920px) {
   #root {
     width: 100vw;
   }
 }
 
+@media screen and (max-width: 1170px) {
+  .toggleVisible {
+    display: inline;
+  }
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  .App > * {
+    margin: 2rem;
+  }
+  nav {
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+  }
+  .SubReddits {
+    position: static;
+    height: auto;
+    border-radius: 1rem 1rem 0 0;
+    border-bottom: 2px solid var(--orange);
+    padding: 0.3rem;
+  }
+  .subRedditsHeading {
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  .SubRedditsList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .SubRedditsList li {
+    width: auto;
+  }
+  .SubRedditButton {
+    flex-direction: column;
+    align-items: left;
+  }
+  .SubRedditButton h4 {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .post .author b::before { /*push name of author to next line*/
+    content: " ";
+    display: block;
+  }
+}
 
 
+@media screen and (max-width: 800px) {
+  :root {
+    font-size: 12px;
+  }
+  .imagePost, .videoPost {
+    grid-template-columns: auto 5fr;
+    grid-template-rows: minmax(4rem, auto) 3fr minmax(3rem, auto);
+  }
+
+  .textPost {
+    grid-template-columns: auto 5fr;
+    grid-template-rows: minmax(4rem, auto) minmax(3rem, auto);
+  }
+
+  .App > * {
+    margin: 1rem;
+  }
+
+  .Votes {
+    width: min-content;
+  }
+
+  .dowVote, .upVote{
+    flex-direction: column;
+  }
+  .dowVote {
+    flex-flow: column-reverse;
+  }
+
+
+  .VoteScale {
+    display: none;
+  }
+
+  .upVote, .dowVote {
+    margin-left: 0px;
+  }
+  
+  .post {
+    padding: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  #logo h1 {
+    display: none;
+  }
+
+  #logo svg {
+    font-size: 10rem;
+  }
+}
