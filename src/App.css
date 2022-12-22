@@ -460,6 +460,9 @@ main :first-child { /*the first post element */
   #root {
     width: 100vw;
   }
+  .SubRedditsList {
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 1170px) {
@@ -467,7 +470,7 @@ main :first-child { /*the first post element */
     display: inline;
   }
   .SubRedditsList {
-    display: none;
+    display: flex;
   }
   .App {
     display: flex;

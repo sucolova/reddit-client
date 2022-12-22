@@ -56,7 +56,7 @@ export const Posts = () => {
         );
       }));
     }
-
+    window.scrollTo(0,0); // scroll to the top
   }, [posts, dispatch])
 
   return (
