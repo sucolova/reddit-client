@@ -466,6 +466,9 @@ main :first-child { /*the first post element */
   .toggleVisible {
     display: inline;
   }
+  .SubRedditsList {
+    display: none;
+  }
   .App {
     display: flex;
     flex-direction: column;
@@ -492,7 +495,8 @@ main :first-child { /*the first post element */
   .SubRedditsList {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    display: none;
   }
   .SubRedditsList li {
     width: auto;
@@ -510,6 +514,13 @@ main :first-child { /*the first post element */
   .post .author b::before { /*push name of author to next line*/
     content: " ";
     display: block;
+  }
+  .SubRedditButton .drac-avatar, .SubRedditButton .drac-avatar-background {
+    display: none;
+  }
+  .SubReddit h4 {
+    border-radius: 0.5rem;
+    padding: 0.2rem;
   }
 }
 

@@ -6,7 +6,11 @@ import { SubRedditButton } from './subRedditButton';
 import { Loading } from '../loading/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { selectPosts } from '../posts/postsSlice';
+import { selectPosts, selectPostsStatus } from '../posts/postsSlice';
+
+
+
+
 
 export const SubReddits = () => {
   const dispatch = useDispatch();
@@ -14,8 +18,23 @@ export const SubReddits = () => {
   const subredditsStatus = useSelector(selectSubRedditsStatus);
   const areSubsListed = useSelector(selectListedSubReddits);
   const [subRedditsToRender, setSubRedditsToRender] = useState();
-  let [display, setDisplay] = useState('flex');
-  const currentSub = useSelector(selectPosts)[0].data.subreddit_name_prefixed;
+  let [display, setDisplay] = useState();
+  const postsStatus = useSelector(selectPostsStatus);
+  const posts = useSelector(selectPosts);
+  const currentSub = postsStatus === 'idle' ? posts[0].data.subreddit_name_prefixed : 'SubReddits';
+
+  // getting display style of SubRedditsList 
+  // this is neccessary hiding the element with toggleVisible
+  const toggleVisible = () => {
+    const domSubList = document.getElementsByClassName('SubRedditsList')[0];
+    const computedStyles = domSubList && window.getComputedStyle(domSubList);
+    const displayDomSubList = computedStyles && computedStyles.getPropertyValue('display');
+    if (displayDomSubList === 'flex') {
+      setDisplay('none');
+    } else {
+      setDisplay('flex');
+    }
+  }
 
   useEffect(() => {
     subredditsStatus === 'nothing' && dispatch(getSubreddits());
@@ -35,13 +54,6 @@ export const SubReddits = () => {
     }
   },[areSubsListed, subReddits, dispatch, subredditsStatus]);
 
-  const toggleVisible = () => {
-    if (display === 'flex') {
-      setDisplay('none');
-    } else {
-      setDisplay('flex');
-    }
-  }
 
   return (
     <div className='SubReddits' >
