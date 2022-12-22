@@ -4,7 +4,7 @@ A minimalistic way to browse reddit in the browser
 ### written in React, Redux, and CSS
 ### data fetched from Reddit via the undocumented reddit.Json API
 
-# testing branch online:
+# main build online:
 https://jazzy-strudel-1ae5a3.netlify.app/
 
 # limitations of the reddit.json api:
