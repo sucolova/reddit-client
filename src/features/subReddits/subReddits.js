@@ -57,7 +57,12 @@ export const SubReddits = () => {
 
   return (
     <div className='SubReddits' >
-      <h2 className='subRedditsHeading'> <FontAwesomeIcon icon={faBars} onClick={toggleVisible} className='toggleVisible'/> {currentSub}</h2>
+      <h2 className='subRedditsHeading'>
+        <div className='menuBars'>
+        <FontAwesomeIcon icon={faBars} onClick={toggleVisible} className='toggleVisible'/> 
+          </div>
+        {currentSub}
+      </h2>
       { subRedditsToRender ? 
         <ul 
           className='SubRedditsList' 

@@ -202,8 +202,9 @@ main { /* container for all posts */
 
 /*SubReddits*/
 
-.toggleVisible {
+.menuBars {
   display: none;
+  margin-right: 1.5rem;
 }
 
 .SubReddits { /*the outermost div */
@@ -436,10 +437,14 @@ main :first-child { /*the first post element */
 }
 
 .svg-inline--fa { /*comment icon*/
-  font-size: 1.7rem;
+  font-size: 2rem;
   color: var(--orange);
+  display: inline-block;
 }
 
+.fa-comment :hover, .fa-comment-slash :hover {
+  color: var(--purple);
+}
 
 /********************************************************************************************/
 
@@ -466,9 +471,14 @@ main :first-child { /*the first post element */
 }
 
 @media screen and (max-width: 1170px) {
-  .toggleVisible {
+  .menuBars {
     display: inline;
   }
+
+  .menuBars :hover {
+    color: var(--purple);
+  }
+
   .SubRedditsList {
     display: flex;
   }
@@ -565,7 +575,7 @@ main :first-child { /*the first post element */
   .upVote, .dowVote {
     margin-left: 0px;
   }
-  
+
   .post {
     padding: 1rem;
   }
