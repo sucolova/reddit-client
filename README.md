@@ -3,7 +3,7 @@
 - responsive Single Page Application written in React, Redux and CSS
 - content fetched from the reddit.json API
 
-## main build online:
+## link to the website:
 https://jazzy-strudel-1ae5a3.netlify.app/
 
 ## limitations of the reddit.json api:
