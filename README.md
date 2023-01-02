@@ -18,7 +18,7 @@ https://jazzy-strudel-1ae5a3.netlify.app/
     - fallbacks for img, fonts etc.
     - toggle button dark and light mode
 - disable video controls (audio source is not includet in reddit.json api)
-- accessibility improvement
+- accessibility improvements
 - say no comments when there are no comments
 - browser support
 - loading animation for images and videos
